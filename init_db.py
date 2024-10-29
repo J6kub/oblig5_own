@@ -21,6 +21,10 @@ def init_db(print_progress=False):
     try:
         tbl_barnehager = CreateCsvTable("DB_barnehager.csv", ["id", "navn", "plasser", "barn"],progress=print_progress)
         tbl_barnehager.rowAppend("1,Boblestien Barnehage,150,70")
+        tbl_barnehager.rowAppend("2,Fangsheng Barnehage,23,22")
+        tbl_barnehager.rowAppend("3,Kakerlakker Hage,250,120")
+        tbl_barnehager.rowAppend("4,Barnepoliti skolen,100,100")
+        tbl_barnehager.rowAppend("5,Abc 123 hagebarn,101,102")
         tbl_barnehager.save()
     except ValueError:
         tbl_barnehager = TableCsv("DB_barnehager.csv",",",progress=print_progress)

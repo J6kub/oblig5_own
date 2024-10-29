@@ -5,12 +5,42 @@
         <title>Handling Forms</title>
     </head>
     <body>
-        <h1>Add your favourite food and number to our database! Last number in DB {{ data.headish }}</h1>
+        <h1>Send sookish! Last number in DB {{ data["tbl_foresatt"].headish }}</h1>
         <form method="post" action="/handlefood">
-            Fav Food: <input type="text" name="food"><br>
-            Fav Number: <input type="number" name="number"><br>
+            <table>
+                <tr>
+                    <td>Navn forelder</td>
+                    <td><input type="text" name="name_foresatt"><br></td>
+                </tr>
+                <tr>
+                    <td>Adresse</td>
+                    <td><input type="text" name="adress"><br></td>
+                </tr>
+                <tr>
+                    <td>Tlf til forelder</td>
+                    <td><input type="number" name="tlf"><br></td>
+                </tr>
+                <tr>
+                    <td>Person Nr. til forelder</td>
+                    <td><input type="number" name="pnr_f"><br></td>
+                </tr>
+                <tr>
+                    <td>Navn til Barnet</td>
+                    <td><input type="text" name="name_kid"><br></td>
+                </tr>
+                <tr>
+                    <td>Person Nr til Barnet</td>
+                    <td><input type="number" name="pnr_kid"><br></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="text" name="food"><br></td>
+                </tr>
+            </table>
+
             <input type="submit" value="Submit">
         </form>
         <br><br><button onclick='location.href="/"'>Back!</button>
+
     </body>
 </html>
