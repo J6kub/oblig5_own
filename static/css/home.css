@@ -1,0 +1,43 @@
+
+body {
+    background:linear-gradient(to bottom, #ffffff, rgb(150,100,100));
+    background-size:cover;
+}
+#mnbox {
+    position:absolute;
+    top:10px;
+    left:50%;
+    transform:translate(-50%,0);
+    width:75%;
+}
+#mnbox h1 {
+    text-align:center;
+}
+#flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+
+#flexbox button {
+    width:45%;
+    height:12rem;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size:32;
+    transition:color, 0.3s
+}
+#flexbox p {
+    display:inline-block;
+    padding:10;
+    font-size:28
+}
+#flexbox button:hover {
+    background-color: #0056b3
