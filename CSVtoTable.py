@@ -105,7 +105,7 @@ class TableCsv:
             writer.writeheader()
             writer.writerows(self.rows)
 
-def CreateCsvTable(pth,hdrs, overwrite=None):
+def CreateCsvTable(pth,hdrs, overwrite=None, progress=False):
     '''Input file name and path, and an array of headers'''
     if "." in pth:
         if pth.split(".")[len(pth.split("."))-1] != "csv":
@@ -117,7 +117,7 @@ def CreateCsvTable(pth,hdrs, overwrite=None):
     with open(pth, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=hdrs)
         writer.writeheader()
-    return TableCsv(pth, ",")
+    return TableCsv(pth, ",", progress=progress)
 
 '''
 tbl = CreateCsvTable("csvTests",["c0","c1","c2"], overwrite=True)         #- Creates a csv file and loads it into tbl variable

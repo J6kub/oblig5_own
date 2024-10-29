@@ -1,0 +1,16 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Handling Forms</title>
+    </head>
+    <body>
+        <h1>Add your favourite food and number to our database! Last number in DB {{ data.headish }}</h1>
+        <form method="post" action="/handlefood">
+            Fav Food: <input type="text" name="food"><br>
+            Fav Number: <input type="number" name="number"><br>
+            <input type="submit" value="Submit">
+        </form>
+        <br><br><button onclick='location.href="/"'>Back!</button>
+    </body>
+</html>
