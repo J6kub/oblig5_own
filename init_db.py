@@ -20,6 +20,8 @@ def init_db(print_progress=False):
     #init barnehage DB
     try:
         tbl_barnehager = CreateCsvTable("DB_barnehager.csv", ["id", "navn", "plasser", "barn"],progress=print_progress)
+        tbl_barnehager.rowAppend("1,Boblestien Barnehage,150,70")
+        tbl_barnehager.save()
     except ValueError:
         tbl_barnehager = TableCsv("DB_barnehager.csv",",",progress=print_progress)
     #init barn DB
@@ -33,6 +35,8 @@ def init_db(print_progress=False):
     except ValueError:
         tbl_soknad = TableCsv("DB_soknad.csv",",",progress=print_progress)
 init_db(True)
+
+
 full_db = {
     "tbl_foresatt":tbl_foresatt,
     "tbl_barnehager":tbl_barnehager,
