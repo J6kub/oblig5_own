@@ -1,6 +1,5 @@
 
 from CSVtoTable import *
-from classes import *
 from flask import Flask, render_template, request
 from init_db import *
 
@@ -55,40 +54,82 @@ def handlesoknad():
 
     if request.method == 'POST':
         pdata = request.form
+
+        ### handle empties
+        try:
+            ftr = pdata["ftr"]
+        except:
+            ftr = False
+        try:
+            ftr_txt = pdata["ftr_txt"]
+        except:
+            ftr_txt = "Ingen fortrinnsrett"
+        try:
+            sibs = pdata["kid_siblings"]
+        except:
+            sibs = False
+
+        ###
+
         for i in pdata: print(i)
         ## Parent Creation / Handling
-        parent = tbl_foresatt.getRowsByValue('pnr', pdata['pnr_f'])
-        if len(parent) == 0:
+        parent = tbl_foresatt.getRowsByValue('pnr', int(pdata['pnr_f']))
+        if len(parent) == 0:  # Tested % certified funkish :)
             parentObj = tbl_foresatt.createRow(f"{tbl_foresatt.maxID() + 1},{pdata['name_foresatt']},{pdata['adress']},{pdata['tlf']},{pdata['pnr_f']}")
             print(parentObj)
+            tbl_foresatt.rows.append(parentObj)
         else: parentObj = parent[0]
 
         ## Kid Creation / Handling
-        kid = tbl_barn.getRowsByValue('pnr', pdata['pnr_kid'])
+        kid = tbl_barn.getRowsByValue('pnr', int(pdata['pnr_kid']))
+        print(kid)
         if len(kid) == 0:
+            print('addddddded chikld')
             kidObj = tbl_barn.createRow(f"{tbl_barn.maxID() + 1},{pdata['name_kid']},{pdata["pnr_kid"]},{parentObj['id']},0")
-        elif kid[0].barnehage_id == 0:
+            tbl_barn.rows.append(kidObj)
+        elif kid[0]['barnehage_id'] == 0 or len(kid) > 1:
+            print('Noooot addddddded chikld')
             kidObj = kid[0]
         else:
             return "Barnet går allerede på barnehage"
-        print(kidObj)
+        #print(kidObj)
 
         ## Soknad Creation / Handling
         pps = list(map(lambda x: f"prioritet{x}", list(range(1, 4))))
         bps = list(map(lambda x: tbl_barnehager.getRowsByValue('id', int(pdata[x]))[0], pps))
-        return bps
+        #return bps
         #
         # Make a function that checks for siblings
         # Seach by foresatt_id in DB_barn, if name PNR is different,
         #
+        sosken = tbl_barn.getRowsByValue('foresatt_id',int(kidObj["foresatt_id"])) # gets all children with same parent id
+        sosken = list(filter(lambda obj: obj["pnr"] != int(kidObj["pnr"]), sosken))# fitlers out current child obj
+        sosken_bhg = list( map(lambda x: x["barnehage_id"],sosken) )  # list of all sibiling barnehage_ids
+        #return sosken_bhg
+        skn_status = "avslag"
+        for bnh in bps: # går over prioriter i søknaden og Tilbyr plass
+            print(bnh)
+            if bnh['plasser'] > bnh['barn'] or bnh["id"] in sosken_bhg or ftr:
+                kidObj['barnehage_id'] = bnh['id']
+                skn_status = bnh['id']
+                bnh['barn'] += 1
+                break
+        if skn_status != "avslag":
+            tildelt_barnehage = tbl_barnehager.getRowsByValue("id",kidObj['barnehage_id'])[0]['navn']
 
+        #print(f'{tbl_soknad.maxID()+1},{parentObj["pnr"]},{kidObj["id"]},{ftr},{ftr_txt},{sibs},{pdata["inntekt"]},{pdata["prioritet1"]},{pdata["prioritet2"]},{pdata["prioritet3"]},{skn_status}')
+        tbl_soknad.rowAppend(f'{tbl_soknad.maxID()+1},{parentObj["pnr"]},{kidObj["id"]},{ftr},{ftr_txt},{sibs},{pdata["inntekt"]},{pdata["prioritet1"]},{pdata["prioritet2"]},{pdata["prioritet3"]},{skn_status}')
+        tbl_barn.save()
+        tbl_barnehager.save()
+        tbl_foresatt.save()
+        tbl_soknad.save()
 
-        """for bnh in bps:
-            if bnh.plasser > bnh.barn:
-                kid has a place!"""
-
-
-            ## approve child
+        # {kidObj.navn} har fått plass på
+        if kidObj['barnehage_id'] == 0:
+            svar_string = f"{kidObj['navn']} har ikke fått plass på noen av barnehagene"
+        else:
+            svar_string = f"{kidObj['navn']} har fått plass på {tildelt_barnehage}"
+        return render_template('svar.html',data=svar_string)
 
 
 @app.route('/commit')

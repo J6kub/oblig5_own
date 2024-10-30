@@ -1,0 +1,15 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}?v=1.0">
+        <title>This site is potato</title>
+    </head>
+    <body>
+        <div id="mnbox">
+            <h1 style="display:inline-block">Svar på søknaden din!</h1>
+            <p>{{ data }}</p>
+            <br><button onclick='location.href="/"'>Gå til hoved siden</button>
+        </div>
+    </body>
+</html>
