@@ -13,6 +13,25 @@ body {
 #mnbox h1 {
     text-align:center;
 }
+#mnbox p {
+            font-size: 30;
+}
+#mnbox button {
+    width:45%;
+    height:12rem;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size:32;
+    transition:color, 0.3s
+}
+#mnbox button:hover {
+    background-color: #0056b3
+}
 #flexbox {
     display: flex;
     flex-wrap: wrap;

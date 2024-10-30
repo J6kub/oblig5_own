@@ -1,8 +1,7 @@
 
 from CSVtoTable import *
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from init_db import *
-
 
 app = Flask(__name__)
 
@@ -91,7 +90,8 @@ def handlesoknad():
             print('Noooot addddddded chikld')
             kidObj = kid[0]
         else:
-            return "Barnet går allerede på barnehage"
+            svar_string = "Barnet går allerede på barnehage!"
+            return redirect(url_for('svar', data=svar_string))
         #print(kidObj)
 
         ## Soknad Creation / Handling
@@ -129,8 +129,17 @@ def handlesoknad():
             svar_string = f"{kidObj['navn']} har ikke fått plass på noen av barnehagene"
         else:
             svar_string = f"{kidObj['navn']} har fått plass på {tildelt_barnehage}"
-        return render_template('svar.html',data=svar_string)
+        return redirect(url_for('svar', data=svar_string))
 
+
+@app.route('/svar')
+def svar():
+    data = request.args.get('data')
+    return render_template('svar.html', data=data)
+
+@app.route('/soknader')
+def soknader():
+    return render_template("soknader.html",data=full_db)
 
 @app.route('/commit')
 def commit():
