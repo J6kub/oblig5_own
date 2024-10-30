@@ -1,3 +1,6 @@
+'''Koden bruker min CSVtoTable modul for å lage og loade inn database system som er satt opp av flere csv filer som
+tilsvarer excel sheets'''
+
 # init database files
 tbl_foresatt = None
 tbl_barnehager = None
@@ -30,12 +33,12 @@ def init_db(print_progress=False):
         tbl_barnehager = TableCsv("DB_barnehager.csv",",",progress=print_progress)
     #init barn DB
     try:
-        tbl_barn = CreateCsvTable("DB_barn.csv", ["id", "navn", "pnr", "foresatt_id"],progress=print_progress)
+        tbl_barn = CreateCsvTable("DB_barn.csv", ["id", "navn", "pnr", "foresatt_id","barnehage_id"],progress=print_progress)
     except ValueError:
         tbl_barn = TableCsv("DB_barn.csv",",",progress=print_progress)
     #init barn DB
     try:
-        tbl_soknad = CreateCsvTable("DB_soknad.csv", ["id", "foresatt_id", "barn_id", "priority","priority_comment", "inntekt"],progress=print_progress)
+        tbl_soknad = CreateCsvTable("DB_soknad.csv", ["id", "foresatt_id", "barn_id", "fortrinnsrett","ftr_txt","sosken","inntekt","p1","p2","p3","status"],progress=print_progress)
     except ValueError:
         tbl_soknad = TableCsv("DB_soknad.csv",",",progress=print_progress)
 init_db(True)

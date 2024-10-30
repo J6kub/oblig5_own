@@ -1,0 +1,12 @@
+select {
+    padding:10px;
+
+}
+select option {
+    padding:10px;
+    background-color:white;
+    transition:background-color 0.3s;
+}
+select option:hover {
+    padding:20;
+}

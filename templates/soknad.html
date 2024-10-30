@@ -2,12 +2,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}?v=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/soknad.css') }}?v=1.0">
         <title>Handling Forms</title>
     </head>
-    <body>
+    <body id="mnbox">
         <h1>Send sookish! Last number in DB {{ data["tbl_foresatt"].headish }}</h1>
-        <form method="post" action="/handlefood">
-            <table>
+        <form method="post" action="/handlesoknad">
+        <table>
+            <tr>
                 <tr>
                     <td>Navn forelder</td>
                     <td><input type="text" name="name_foresatt"><br></td>
@@ -33,8 +36,50 @@
                     <td><input type="number" name="pnr_kid"><br></td>
                 </tr>
                 <tr>
+                    <td>Prioriter Barnehager</td>
                     <td></td>
-                    <td><input type="text" name="food"><br></td>
+                </tr>
+                <tr>
+                    <td>Første Prioritet:</td>
+                    <td>
+                        <select name="prioritet1">
+                            {% for row in data["tbl_barnehager"].rows %}
+                                <option value="{{ row["id"] | int }}">{{ row["navn"] }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Andre Prioritet:</td>
+                    <td>
+                        <select name="prioritet2">
+                            {% for row in data["tbl_barnehager"].rows %}
+                                <option value="{{ row["id"] | int }}">{{ row["navn"] }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tredje Prioritet:</td>
+                    <td>
+                        <select name="prioritet3">
+                            {% for row in data["tbl_barnehager"].rows %}
+                                <option value="{{ row["id"] | int }}">{{ row["navn"] }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Har barnet søsken i barnehagen?</td>
+                    <td><input type="checkbox" name="kid_siblings"><br></td>
+                </tr>
+                <tr>
+                    <td>Har barnet fortrinnsrett?</td>
+                    <td><input type="checkbox" name="kid_siblings"><br></td>
+                </tr>
+                <tr>
+                    <td>Spesifiser grunnen til fortrinnsrett</td>
+                    <td><textarea id="ftr_txt" name="comments" rows="4" cols="50"></textarea></td>
                 </tr>
             </table>
 
@@ -43,4 +88,5 @@
         <br><br><button onclick='location.href="/"'>Back!</button>
 
     </body>
+    <script src="{{ url_for('static', filename='js/soknad.js') }}"></script>
 </html>

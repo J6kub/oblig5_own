@@ -1,4 +1,4 @@
-class soknad():
+'''class soknad():
     def __init__(self, id):
         self.id = id
 
@@ -21,4 +21,4 @@ class barn():
         self.pnr = pnr
         self.foresatt_id = fid
     def rawRow(self):
-        return ",".join([str(self.id),self.navn,str(self.pnr),str(self.foresatt_id)])
+        return ",".join([str(self.id),self.navn,str(self.pnr),str(self.foresatt_id)])'''
