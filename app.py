@@ -137,9 +137,9 @@ def svar():
     data = request.args.get('data')
     return render_template('svar.html', data=data)
 
-@app.route('/soknader')
-def soknader():
-    return render_template("soknader.html",data=full_db)
+@app.route('/adm_all_data')
+def adm_all_data():
+    return render_template("adm_all_data.html",data=full_db)
 
 @app.route('/commit')
 def commit():

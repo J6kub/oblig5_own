@@ -1,0 +1,52 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/adm_all_data.css') }}?v=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}?v=1.0">
+        <title>Soknader</title>
+    </head>
+    <body>
+        <div id="mnbox">
+            <h1 style="display:inline-block">Alle soknader</h1>
+            <p>Viser data for:
+            {% for db in data %}
+                <strong>{{ db }}</strong>
+            {% endfor %}
+            </p>
+
+            <select id="selectioo">
+                {% for db in data%}
+                    <option value="{{ db }}">{{ db }}</option>
+                {% endfor %}
+            </select>
+
+            {% for db in data %}
+                <table id="{{ db }}">
+                    <tr>
+                        {% for head in data[db].headish %}
+                            <td>{{ head }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% for row in data[db].rows %}
+                        <tr>
+                            {% for item in row %}
+                                <td>{{ row[item] }}</td>
+
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endfor %}
+
+            <br><button onclick='location.href="/"'>Gå til hoved siden</button>
+        </div>
+    </body>
+    <style>
+
+    </style>
+    <script>
+        let detz = [{% for db in data%} "{{ db }}", {% endfor %}]
+    </script>
+    <script src="{{ url_for('static', filename='js/adm_all_data.js') }}"></script>
+</html>
