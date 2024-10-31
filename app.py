@@ -13,9 +13,30 @@ def home():  # put application's code here
 def potato():
     print(str(",".join(['ass','10'])))
     return render_template('potato.html')
-@app.route('/register')
-def register():
-    return render_template('register.html')
+@app.route('/soknader')
+def soknader():
+    dataS = []
+    for sook in tbl_soknad.rows:
+        if is_floatable(sook['status']):
+            sook_bhg = tbl_barnehager.getRowsByValue('id', int(sook['status']))[0]["navn"]
+            sook_tbd = "Tilbud"
+        else:
+            sook_bhg = ""
+            sook_tbd = "Avslag"
+        if sook['fortrinnsrett'] == 'False': ftrS = 'Nei'
+        else: ftrS = 'ja'
+        sooki = {
+            "id":int(sook['id']),
+            "foresatt id":int(sook['foresatt_id']),
+            "barn id":int(sook['barn_id']),
+            "fortinnsrett":ftrS,
+            "fortrinnsrett Kommentar":sook['ftr_txt'],
+            "status":sook_tbd,
+            "tilbud":sook_bhg
+        }
+        dataS.append(sooki)
+
+    return render_template('soknader.html', data=dataS)
 
 @app.route('/oppgave')
 def oppgave():

@@ -36,8 +36,7 @@ select option:hover {
 table tr td {
     font-size:17;
     padding:5;
-
-    transition: opacity 1s;
+    transition:opacity 0.3s;
 }
 
 table tr td input {

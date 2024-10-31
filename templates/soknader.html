@@ -1,0 +1,33 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}?v=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/adm_all_data.css') }}?v=1.0">
+        <title>Svar</title>
+    </head>
+    <body>
+        <div id="mnbox">
+            <h1 style="display:inline-block">Alle fine soknader</h1>
+            <table>
+                <tr>
+                    {% for k,v in data[0].items() %}
+                        <td>{{ k }}</td>
+                    {% endfor %}
+                </tr>
+                {% for sok in data %}
+                    <tr>
+                        {% for key, value in sok.items() %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <br><button onclick='location.href="/"'>Gå til hoved siden</button>
+        </div>
+    </body>
+    <style>
+
+    </style>
+</html>
