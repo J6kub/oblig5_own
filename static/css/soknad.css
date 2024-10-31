@@ -10,3 +10,49 @@ select option {
 select option:hover {
     padding:20;
 }
+#buttass {
+    margin-top:15;
+    width:200;
+    height:100;
+    font-size:30;
+    background-color:lightsalmon;
+    transition: background-color 0.25s;
+    color:white;
+    position:relative;
+    left:50%;
+    transform:translate(-50%,0);
+}
+#buttass:hover {
+    background-color:lightseagreen;
+}
+#buttass text {
+    text-align:center;
+    top:50%;
+    width:100%;
+    display:inline-block;
+    transform: translate(0,100%);
+    cursor:pointer;
+}
+table tr td {
+    font-size:17;
+    padding:5;
+
+    transition: opacity 1s;
+}
+
+table tr td input {
+    font-size:17
+}
+table tr td textarea {
+    font-size:17
+}
+table tr td input[type=checkbox]{
+    width:26;
+    height:26;
+}
+table {
+    position:relative;
+    left:50%;
+    transform:translate(-50%,0);
+}
+

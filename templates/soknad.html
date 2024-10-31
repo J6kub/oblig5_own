@@ -2,38 +2,38 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}?v=1.0">
+
         <link rel="stylesheet" href="{{ url_for('static', filename='css/soknad.css') }}?v=1.0">
-        <title>Handling Forms</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}?v=1.0">
+        <title>Soknad</title>
     </head>
     <body id="mnbox">
-        <h1>Send sookish! Last number in DB {{ data["tbl_foresatt"].headish }}</h1>
+        <h1>Send søknad!</h1>
         <form method="post" action="/handlesoknad">
-        <table>
-            <tr>
+            <table>
                 <tr>
                     <td>Navn forelder</td>
-                    <td><input type="text" name="name_foresatt"><br></td>
+                    <td><input type="text" name="name_foresatt" required><br></td>
                 </tr>
                 <tr>
                     <td>Adresse</td>
-                    <td><input type="text" name="adress"><br></td>
+                    <td><input type="text" name="adress" required><br></td>
                 </tr>
                 <tr>
                     <td>Tlf til forelder</td>
-                    <td><input type="number" name="tlf"><br></td>
+                    <td><input type="number" name="tlf" required><br></td>
                 </tr>
                 <tr>
                     <td>Person Nr. til forelder</td>
-                    <td><input type="number" name="pnr_f"><br></td>
+                    <td><input type="number" name="pnr_f" required><br></td>
                 </tr>
                 <tr>
                     <td>Navn til Barnet</td>
-                    <td><input type="text" name="name_kid"><br></td>
+                    <td><input type="text" name="name_kid" required><br></td>
                 </tr>
                 <tr>
                     <td>Person Nr til Barnet</td>
-                    <td><input type="number" name="pnr_kid"><br></td>
+                    <td><input type="number" name="pnr_kid" required><br></td>
                 </tr>
                 <tr>
                     <td>Prioriter Barnehager</td>
@@ -42,7 +42,8 @@
                 <tr>
                     <td>Første Prioritet:</td>
                     <td>
-                        <select name="prioritet1">
+                        <select name="prioritet1" required>
+                            <option value="">Velg barnehage</option>
                             {% for row in data["tbl_barnehager"].rows %}
                                 <option value="{{ row["id"] | int }}">{{ row["navn"] }}</option>
                             {% endfor %}
@@ -52,7 +53,8 @@
                 <tr>
                     <td>Andre Prioritet:</td>
                     <td>
-                        <select name="prioritet2">
+                        <select name="prioritet2" required>
+                            <option value="">Velg barnehage</option>
                             {% for row in data["tbl_barnehager"].rows %}
                                 <option value="{{ row["id"] | int }}">{{ row["navn"] }}</option>
                             {% endfor %}
@@ -62,7 +64,8 @@
                 <tr>
                     <td>Tredje Prioritet:</td>
                     <td>
-                        <select name="prioritet3">
+                        <select name="prioritet3" required>
+                            <option value="">Velg barnehage</option>
                             {% for row in data["tbl_barnehager"].rows %}
                                 <option value="{{ row["id"] | int }}">{{ row["navn"] }}</option>
                             {% endfor %}
@@ -79,17 +82,17 @@
                 </tr>
                 <tr id="ftr_txt_tr" style='display:none'>
                     <td>Spesifiser grunnen<br>til fortrinnsrett</td>
-                    <td><textarea name="ftr_txt" rows="4" cols="35"></textarea></td>
+                    <td><textarea name="ftr_txt" style="width: 224px; height: 74px;" rows="4" cols="35"></textarea></td>
                 </tr>
                 <tr>
                     <td>Familiens inntekt?</td>
-                    <td><input type="number" name="inntekt"><br></td>
+                    <td><input type="number" name="inntekt" required><br></td>
                 </tr>
             </table>
 
-            <input type="submit" value="Submit">
+            <input class='subbit' type="submit" id='buttass' value="Submit" >
         </form>
-        <br><br><button onclick='location.href="/"'>Back!</button>
+        <br><br><div id="buttass" style='display:inline-block;border:solid black 2px;' onclick='location.href="/"'><text>Back!</text></div>
 
     </body>
     <script src="{{ url_for('static', filename='js/soknad.js') }}"></script>
