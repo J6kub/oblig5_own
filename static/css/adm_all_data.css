@@ -1,8 +1,16 @@
 table {
-    border:solid black 2px
+    border:solid black 2px;
+    position:relative;
+    left:50%;
+    transform:translate(-50%,0);
+    box-shadow: 5px 5px 5px;
 }
 table tr td {
     padding:5px;
+    border-bottom:solid black 1px;
+}
+table tr {
+
 }
 table tr td:[0] {
     padding:10px;
@@ -12,9 +20,27 @@ select {
     font-size:21;
     background-color:lightcoral;
     color:white;
+    position:relative;
+    left:50%;
+    transform:translate(-50%,0);
+    margin-bottom: 5px;
 }
 select option {
     border:solid white 2px;
     margin:2px;
 
+}
+button {
+    position:relative;
+    left:50%;
+    transform:translate(-50%,0);
+    width:auto !important;
+    height:100 !important;
+    background-color: lightcoral !important;
+    border:solid black 2px !important;
+}
+h1 {
+    position:relative;
+    left:50%;
+    transform:translate(-50%,0);
 }

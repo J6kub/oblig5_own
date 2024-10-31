@@ -4,17 +4,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/adm_all_data.css') }}?v=1.0">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}?v=1.0">
-        <title>Soknader</title>
+        <title>All Data</title>
     </head>
     <body>
         <div id="mnbox">
-            <h1 style="display:inline-block">Alle soknader</h1>
-            <p>Viser data for:
-            {% for db in data %}
-                <strong>{{ db }}</strong>
-            {% endfor %}
-            </p>
-
+            <h1 style="display:inline-block">Alle soknader</h1><br>
             <select id="selectioo">
                 {% for db in data%}
                     <option value="{{ db }}">{{ db }}</option>
