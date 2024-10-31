@@ -74,7 +74,7 @@ def handlesoknad():
         ## Parent Creation / Handling
         parent = tbl_foresatt.getRowsByValue('pnr', int(pdata['pnr_f']))
         if len(parent) == 0:  # Tested % certified funkish :)
-            parentObj = tbl_foresatt.createRow(f"{tbl_foresatt.maxID() + 1},{pdata['name_foresatt']},{pdata['adress']},{pdata['tlf']},{pdata['pnr_f']}")
+            parentObj = tbl_foresatt.createRow(f"{tbl_foresatt.maxID() + 1};{pdata['name_foresatt']};{pdata['adress']};{pdata['tlf']};{pdata['pnr_f']}")
             print(parentObj)
             tbl_foresatt.rows.append(parentObj)
         else: parentObj = parent[0]
@@ -84,7 +84,7 @@ def handlesoknad():
         print(kid)
         if len(kid) == 0:
             print('addddddded chikld')
-            kidObj = tbl_barn.createRow(f"{tbl_barn.maxID() + 1},{pdata['name_kid']},{pdata["pnr_kid"]},{parentObj['id']},0")
+            kidObj = tbl_barn.createRow(f"{tbl_barn.maxID() + 1};{pdata['name_kid']};{pdata["pnr_kid"]};{parentObj['id']};0")
             tbl_barn.rows.append(kidObj)
         elif kid[0]['barnehage_id'] == 0 or len(kid) > 1:
             print('Noooot addddddded chikld')
@@ -118,7 +118,7 @@ def handlesoknad():
             tildelt_barnehage = tbl_barnehager.getRowsByValue("id",kidObj['barnehage_id'])[0]['navn']
 
         #print(f'{tbl_soknad.maxID()+1},{parentObj["pnr"]},{kidObj["id"]},{ftr},{ftr_txt},{sibs},{pdata["inntekt"]},{pdata["prioritet1"]},{pdata["prioritet2"]},{pdata["prioritet3"]},{skn_status}')
-        tbl_soknad.rowAppend(f'{tbl_soknad.maxID()+1},{parentObj["pnr"]},{kidObj["id"]},{ftr},{ftr_txt},{sibs},{pdata["inntekt"]},{pdata["prioritet1"]},{pdata["prioritet2"]},{pdata["prioritet3"]},{skn_status}')
+        tbl_soknad.rowAppend(f'{tbl_soknad.maxID()+1};{parentObj["pnr"]};{kidObj["id"]};{ftr};{ftr_txt};{sibs};{pdata["inntekt"]};{pdata["prioritet1"]};{pdata["prioritet2"]};{pdata["prioritet3"]};{skn_status}')
         tbl_barn.save()
         tbl_barnehager.save()
         tbl_foresatt.save()

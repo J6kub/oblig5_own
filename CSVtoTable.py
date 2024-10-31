@@ -98,13 +98,13 @@ class TableCsv:
     def saveTo(self,flname):
         '''Saves table to a specified CSV file.'''
         with open(flname, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=self.headish)
+            writer = csv.DictWriter(csvfile, fieldnames=self.headish, delimiter=';')
             writer.writeheader()
             writer.writerows(self.rows)
     def save(self):
         '''Saves table.'''
         with open(self.path, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=self.headish)
+            writer = csv.DictWriter(csvfile, fieldnames=self.headish, delimiter=';')
             writer.writeheader()
             writer.writerows(self.rows)
     def maxID(self):
@@ -123,9 +123,9 @@ def CreateCsvTable(pth,hdrs, overwrite=None, progress=False):
     if os.path.exists(pth) and overwrite is None:
         raise ValueError("File already exists and might be overwritten! add overwrite=True as parameter")
     with open(pth, 'w', newline='', encoding='utf-8') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=hdrs)
+        writer = csv.DictWriter(csvfile, fieldnames=hdrs, delimiter=';')
         writer.writeheader()
-    return TableCsv(pth, ",", progress=progress)
+    return TableCsv(pth, ";", progress=progress)
 
 
 '''tbl = CreateCsvTable("csvTests",["id","c1","c2"], overwrite=True)         #- Creates a csv file and loads it into tbl variable
