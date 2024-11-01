@@ -13,4 +13,5 @@ classes.py - andre funksjoner
 app.py - Hoved Flask fil
 
 Om ting ikke funker!!!
-Pycharm har default mappe templates så det trengs ikke å skrive inn "template/... .html" som i thonny
+
+i app.py, Linje 6 template_path kan byttes til "templates/" siden Thonny har ikke default template mappe
