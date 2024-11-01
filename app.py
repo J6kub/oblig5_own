@@ -141,7 +141,7 @@ def handlesoknad():
             tildelt_barnehage = tbl_barnehager.getRowsByValue("id",kidObj['barnehage_id'])[0]['navn']
 
         #print(f'{tbl_soknad.maxID()+1},{parentObj["pnr"]},{kidObj["id"]},{ftr},{ftr_txt},{sibs},{pdata["inntekt"]},{pdata["prioritet1"]},{pdata["prioritet2"]},{pdata["prioritet3"]},{skn_status}')
-        tbl_soknad.rowAppend(f'{tbl_soknad.maxID()+1};{parentObj["pnr"]};{kidObj["id"]};{ftr};{ftr_txt};{sibs};{pdata["inntekt"]};{pdata["prioritet1"]};{pdata["prioritet2"]};{pdata["prioritet3"]};{skn_status}')
+        tbl_soknad.rowAppend(f'{tbl_soknad.maxID()+1};{parentObj["id"]};{kidObj["id"]};{ftr};{ftr_txt};{sibs};{pdata["inntekt"]};{pdata["prioritet1"]};{pdata["prioritet2"]};{pdata["prioritet3"]};{skn_status}')
         tbl_barn.save()
         tbl_barnehager.save()
         tbl_foresatt.save()
