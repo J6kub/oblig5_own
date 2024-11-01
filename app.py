@@ -103,7 +103,7 @@ def handlesoknad():
 
         ## Kid Creation / Handling
         kid = tbl_barn.getRowsByValue('pnr', int(pdata['pnr_kid']))
-        print(kid)
+        ##print(kid)
         if len(kid) == 0:
             print('addddddded chikld')
             kidObj = tbl_barn.createRow(f"{tbl_barn.maxID() + 1};{pdata['name_kid']};{pdata["pnr_kid"]};{parentObj['id']};0")
@@ -131,7 +131,7 @@ def handlesoknad():
         skn_status = "avslag"
         #priority list iteration
         for bnh in bps:
-            print(bnh)
+            #print(bnh)
             if bnh['plasser'] > bnh['barn'] or bnh["id"] in sosken_bhg or ftr:
                 kidObj['barnehage_id'] = bnh['id']
                 skn_status = bnh['id']
