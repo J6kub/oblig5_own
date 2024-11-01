@@ -3,11 +3,12 @@ from CSVtoTable import *
 from flask import Flask, render_template, request, redirect, url_for
 from init_db import *
 
+template_path = ""
 app = Flask(__name__)
 
 @app.route('/')
 def home():  # put application's code here
-    return render_template('home.html')
+    return render_template(f'{template_path}home.html')
 
 @app.route('/potato')
 def potato():
@@ -30,21 +31,21 @@ def soknader():
             "foresatt id":int(sook['foresatt_id']),
             "barn id":int(sook['barn_id']),
             "fortinnsrett":ftrS,
-            "fortrinnsrett Kommentar":sook['ftr_txt'],
             "status":sook_tbd,
-            "tilbud":sook_bhg
+            "tilbud":sook_bhg,
+            "fortrinnsrett Kommentar": sook['ftr_txt'],
         }
         dataS.append(sooki)
 
-    return render_template('soknader.html', data=dataS)
+    return render_template(f'{template_path}soknader.html', data=dataS)
 
 @app.route('/oppgave')
 def oppgave():
-    return render_template('oppgave.html')
+    return render_template(f'{template_path}oppgave.html')
 
 @app.route('/soknad')
 def soknad():
-    return render_template('soknad.html', data=full_db)
+    return render_template(f'{template_path}soknad.html', data=full_db)
 
 @app.route('/handlefood', methods=['POST'])
 def handlefood():
@@ -52,7 +53,7 @@ def handlefood():
         #data = request.form --- refer POST data to a variable
         tbl.rowAppend(f"{request.form['food']},{request.form['number']}")
         tbl.save()
-    return render_template('index.html')
+    return render_template(f'{template_path}index.html')
 
 @app.route('/handlesoknad', methods=['POST'])
 def handlesoknad():
@@ -128,7 +129,8 @@ def handlesoknad():
         sosken_bhg = list( map(lambda x: x["barnehage_id"],sosken) )  # list of all sibiling barnehage_ids
         #return sosken_bhg
         skn_status = "avslag"
-        for bnh in bps: # går over prioriter i søknaden og Tilbyr plass
+        #priority list iteration
+        for bnh in bps:
             print(bnh)
             if bnh['plasser'] > bnh['barn'] or bnh["id"] in sosken_bhg or ftr:
                 kidObj['barnehage_id'] = bnh['id']
@@ -156,11 +158,11 @@ def handlesoknad():
 @app.route('/svar')
 def svar():
     data = request.args.get('data')
-    return render_template('svar.html', data=data)
+    return render_template(f'{template_path}svar.html', data=data)
 
 @app.route('/adm_all_data')
 def adm_all_data():
-    return render_template("adm_all_data.html",data=full_db)
+    return render_template(f'{template_path}adm_all_data.html',data=full_db)
 
 @app.route('/commit')
 def commit():
