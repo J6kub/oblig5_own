@@ -64,4 +64,20 @@ body {
 #flexbox button:hover {
     background-color: #0056b3
 }
+.admin {
+    background-color: orangered !important;
+    box-shadow: 5px 5px darkred !important;
+}
+.admin:hover {
+    background-color: red !important;
+    box-shadow: 0px 0px darkred !important;
+}
+.misc {
+    background-color: limegreen !important;
+    box-shadow: 5px 5px darkgreen !important;
+}
+.misc:hover {
+    background-color: green !important;
+    box-shadow: 0px 0px darkgreen !important;
+}
 
