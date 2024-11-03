@@ -2,4 +2,5 @@ from app import full_db
 
 def saveAllDb():
     for i in full_db:
-        print(i)
+        full_db[i].save()
+
