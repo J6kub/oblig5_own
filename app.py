@@ -16,6 +16,9 @@ def potato():
     return render_template('potato.html')
 @app.route('/soknader')
 def soknader():
+    if len(tbl_soknad.rows) == 0:
+        return render_template(f'{template_path}potato.html')
+
     dataS = []
     for sook in tbl_soknad.rows:
         if is_floatable(sook['status']):

@@ -1,12 +1,16 @@
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>This site is potato</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}?v=1.0">
     </head>
     <body>
-        <h1>Yes very good</h1>
-        <p>Omg i just ate a potato pie.</p>
-        <br><button onclick='location.href="/"'>Back to home!</button>
+        <div id="mnbox">
+            <h1>Søknader!</h1>
+            <div id="flexbox">
+                <p>Det finnes ingen registrerte søknader!</p>
+                <br>
+                <button onclick="location.href='/'" style="padding:15;font-size:16;display:inline-block;width:200;height:auto">Tilbake</button><br>
+            </div>
+        </div>
     </body>
 </html>
