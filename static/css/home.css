@@ -1,4 +1,7 @@
+:root {
+    --shadow_off: 6px;
 
+}
 body {
     background:linear-gradient(to bottom, #ffffff, rgb(150,100,100));
     background-size:cover;
@@ -15,7 +18,7 @@ body {
     text-align:center;
 }
 #mnbox p {
-            font-size: 30;
+    font-size: 30;
 }
 #mnbox button {
     width:45%;
@@ -29,7 +32,7 @@ body {
     cursor: pointer;
     font-size:32;
     transition:color 0.3s, box-shadow 0.3s;
-    box-shadow:5px 5px darkblue;
+    box-shadow:var(--shadow_off) var(--shadow_off) darkblue;
 }
 #mnbox button:hover {
     background-color: #0056b3;
@@ -66,7 +69,7 @@ body {
 }
 .admin {
     background-color: orangered !important;
-    box-shadow: 5px 5px darkred !important;
+    box-shadow: var(--shadow_off) var(--shadow_off) darkred !important;
 }
 .admin:hover {
     background-color: red !important;
@@ -74,7 +77,7 @@ body {
 }
 .misc {
     background-color: limegreen !important;
-    box-shadow: 5px 5px darkgreen !important;
+    box-shadow: var(--shadow_off) var(--shadow_off) darkgreen !important;
 }
 .misc:hover {
     background-color: green !important;
