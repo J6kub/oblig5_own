@@ -19,13 +19,13 @@ def init_db(print_progress=False):
         tbl_foresatt = TableCsv(db_path + "DB_foresatt.csv",splitter,progress=print_progress)
     #init barnehage DB
     try:
-        tbl_barnehager = CreateCsvTable(db_path + "DB_barnehager.csv", ["id", "navn", "plasser", "barn"],progress=print_progress)
-        tbl_barnehager.rowAppend("1;Boblestien Barnehage;150;70")
-        tbl_barnehager.rowAppend("2;Fangsheng Barnehage;23;22")
-        tbl_barnehager.rowAppend("3;Kakerlakker Hage;250;120")
-        tbl_barnehager.rowAppend("4;Barnepoliti skolen;100;100")
-        tbl_barnehager.rowAppend("5;Abc 123 hagebarn;101;102")
-        tbl_barnehager.rowAppend("6;Barnehage for katter;10;0")
+        tbl_barnehager = CreateCsvTable(db_path + "DB_barnehager.csv", ["id", "navn", "plasser", "barn","desc"],progress=print_progress)
+        tbl_barnehager.rowAppend("1;Boblestien Barnehage;150;70;Det er kult med bobbler!")
+        tbl_barnehager.rowAppend("2;Fangsheng Barnehage;23;22;你好，我们不会说广东话")
+        tbl_barnehager.rowAppend("3;Kakerlakker Hage;250;120;En kakkelake, to kakkelake, maaange kakkelake!!")
+        tbl_barnehager.rowAppend("4;Barnepoliti skolen;100;100;Vil barnet ditt bli politi? Da er den i rett sted! Vi lager politi av barnet ditt!")
+        tbl_barnehager.rowAppend("5;Abc 123 hagebarn;101;102;Mest basic barnehage som finnes, vi lærer barn alfabet og tall")
+        tbl_barnehager.rowAppend("6;Barnehage for katter;10;0;Vi tar imot bare barn som ønsker å kle seg ut som katter")
         tbl_barnehager.save()
     except ValueError:
         tbl_barnehager = TableCsv(db_path + "DB_barnehager.csv",splitter,progress=print_progress)

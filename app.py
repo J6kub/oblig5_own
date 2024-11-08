@@ -170,5 +170,10 @@ def adm_all_data():
 @app.route('/commit')
 def commit():
     return '<iframe width="560" height="315" src="https://www.youtube.com/embed/WbHGtGSwoGA?si=J5keRRIGpv74clcn&amp;controls=0&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
+
+@app.route('/barnehager')
+def barnehager():
+    return render_template(f'{template_path}barnehager.html',data=tbl_barnehager)
+
 if __name__ == '__main__':
     app.run()

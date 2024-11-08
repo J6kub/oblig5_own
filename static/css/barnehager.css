@@ -1,0 +1,54 @@
+:root {
+    --shadow_off: 6px;
+
+}
+body {
+    background:linear-gradient(to bottom, #ffffff, rgb(150,100,100));
+    background-size:cover;
+}
+.cont {
+    height:100%;
+    display:block;
+    filter:blur(0px)
+}
+.cont p {
+    filter:blur(0px) !important;
+    font-size: 32px;
+    text-align: center;
+    width:100%
+}
+.cont_c {
+    width:70%;
+    position:relative;
+    left:50%;
+    transform: translate(-50%,0);
+    border: solid white 3px;
+    border-radius: 25px;
+}
+.cont_c img {
+    width: 50%;
+    height: 50%;
+    position: relative;
+    left:50%;
+    transform:translate(-50%,0);
+    object-fit: cover; /* Ensures the image covers the entire container */
+    border-radius: inherit; /* Maintains the border radius of the parent div */
+}
+.p_l {
+    font-size: 16px !important;
+}
+nav button {
+    background-color:red;
+    color:white;
+    box-shadow: 3px 3px darkred;
+    padding:15px;
+    font-size:22px;
+    transition:color 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+}
+nav button:hover {
+    background-color:firebrick;
+    color:white;
+    box-shadow: 0px 0px darkred;
+}
+

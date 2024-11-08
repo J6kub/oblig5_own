@@ -1,0 +1,23 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/barnehager.css') }}?v=1.0">
+        <title>Barnehager</title>
+    </head>
+    <body>
+
+        <nav><button onclick='location.href="/"'>Tilbake</button></nav>
+        {% for bhg in data.rows %}
+            <div class="cont">
+                <div class="cont_c">
+                    <p>{{ bhg["navn"] }}</p>
+                    <p class="p_l">Antall Plasser: {{ bhg['plasser'] }} <br> Ledige: {{ bhg['plasser'] - bhg['barn'] }}</p>
+
+                    <img src="{{ url_for('static', filename='images/barnehager/' + '{:.0f}'.format(bhg['id']) + '.png') }}">
+                    <p>{{ bhg['desc'] }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </body>
+</html>
