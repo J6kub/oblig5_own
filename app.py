@@ -33,10 +33,10 @@ def soknader():
             "id":int(sook['id']),
             "foresatt id":int(sook['foresatt_id']),
             "barn id":int(sook['barn_id']),
-            "fortinnsrett":ftrS,
             "status":sook_tbd,
             "tilbud":sook_bhg,
-            "fortrinnsrett Kommentar": sook['ftr_txt'],
+            "fortinnsrett": ftrS,
+            "Kommentar": sook['ftr_txt'],
         }
         dataS.append(sooki)
 
