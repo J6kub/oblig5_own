@@ -12,7 +12,7 @@
             <div class="cont">
                 <div class="cont_c">
                     <p>{{ bhg["navn"] }}</p>
-                    <p class="p_l">Antall Plasser: {{ bhg['plasser'] }} <br> Ledige: {{ bhg['plasser'] - bhg['barn'] }}</p>
+                    <p class="p_l">Antall Plasser: {{ bhg['plasser'] | int }} <br> Ledige: {{ bhg['plasser'] | int - bhg['barn'] | int}}</p>
 
                     <img src="{{ url_for('static', filename='images/barnehager/' + '{:.0f}'.format(bhg['id']) + '.png') }}">
                     <p>{{ bhg['desc'] }}</p>
