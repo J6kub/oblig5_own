@@ -10,10 +10,7 @@ app = Flask(__name__)
 def home():  # put application's code here
     return render_template(f'{template_path}home.html')
 
-@app.route('/potato')
-def potato():
-    print(str(",".join(['ass','10'])))
-    return render_template('potato.html')
+
 @app.route('/soknader')
 def soknader():
     if len(tbl_soknad.rows) == 0:
