@@ -1,16 +1,22 @@
-#Oblig5 & Barnehage Mappe Levering
+# Oblig5 & Barnehage Mappe Levering
 
 Hei hei, det er Gruppe 7b barnehage oppgave! 
 
-#---------------------------------------------------------
+## ---------------------------------------------------------
 
-init_db.py - Kjører ved start av applikasjonen, lager/ importerer csv filer inn i minne
+## init_db.py
 
-classes.py - andre funksjoner
+Kjører ved start av applikasjonen, lager/ importerer csv filer inn i minne
 
-app.py - Hoved Flask fil
+## classes.py
 
-Om ting ikke funker!!!
+andre funksjoner
+
+##app.py
+
+Hoved Flask fil
+
+# Om ting ikke funker!!!
 
 installer Flask modul
 
