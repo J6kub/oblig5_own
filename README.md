@@ -16,3 +16,5 @@ installer Flask modul
 
 i app.py, Linje 6 template_path kan byttes til "templates/" siden Thonny har ikke default template mappe
 
+
+
