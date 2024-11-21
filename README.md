@@ -1,10 +1,8 @@
-#Oblig5
+#Oblig5 & Barnehage Mappe Levering
 
-Moduler:
+Hei hei, det er Gruppe 7b barnehage oppgave! 
 
-pip install flask
-
-TableCSV doc: https://j6kub.github.io/sites/xpo.html
+#---------------------------------------------------------
 
 init_db.py - Kjører ved start av applikasjonen, lager/ importerer csv filer inn i minne
 
@@ -14,4 +12,7 @@ app.py - Hoved Flask fil
 
 Om ting ikke funker!!!
 
+installer Flask modul
+
 i app.py, Linje 6 template_path kan byttes til "templates/" siden Thonny har ikke default template mappe
+

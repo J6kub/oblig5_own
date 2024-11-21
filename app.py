@@ -75,7 +75,9 @@ def handlesoknad():
 
     if request.method == 'POST':
         pdata = request.form
-
+        for ft in pdata.keys():
+            if is_floatable(pdata[ft]): ## Input check to not break the app... too badly....
+                pdata[ft].replace(';','')
         ### handle empties
         try:
             ftr = pdata["ftr"]
