@@ -12,11 +12,11 @@ Kjører ved start av applikasjonen, lager/ importerer csv filer inn i minne
 
 andre funksjoner
 
-##app.py
+## app.py
 
 Hoved Flask fil
 
-# Om ting ikke funker!!!
+## Om ting ikke funker!!!
 
 Testing
 
