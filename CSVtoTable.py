@@ -136,3 +136,4 @@ print(tbl.getRowsByValue("id",2))
 
 tbl.save() '''                                               #- Saves the file
 #tbl = TableCsv('DB_barn.csv',',')
+#
