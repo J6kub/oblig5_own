@@ -74,10 +74,15 @@ def handlesoknad():
     '''
 
     if request.method == 'POST':
-        pdata = request.form
-        for ft in pdata.keys():
-            if is_floatable(pdata[ft]): ## Input check to not break the app... too badly....
-                pdata[ft].replace(';','')
+        rawData = request.form
+        pdata = {}
+        for ft in rawData.keys():
+            vali = rawData[ft]
+            pdata[ft] = vali
+            if is_floatable(vali): ## Input check to not break the app... too badly....
+                for char in [';', ':', "'", '"', "[","]"]:
+                    pdata[ft] = pdata[ft].replace(char, '')
+
         ### handle empties
         try:
             ftr = pdata["ftr"]
