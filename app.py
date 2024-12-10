@@ -79,7 +79,7 @@ def handlesoknad():
         for ft in rawData.keys():
             vali = rawData[ft]
             pdata[ft] = vali
-            if is_floatable(vali): ## Input check to not break the app... too badly....
+            if not is_floatable(vali): ## Input check to not break the app... too badly....
                 for char in [';', ':', "'", '"', "[","]"]:
                     pdata[ft] = pdata[ft].replace(char, '')
 
